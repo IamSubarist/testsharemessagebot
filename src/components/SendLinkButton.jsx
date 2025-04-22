@@ -5,7 +5,7 @@ const SendLinkButton = () => {
   // Функция для проверки, запущен ли в Telegram Web App
   const handleCheck = () => {
     if (WebApp.isWebApp) {
-      alert("123э");
+      alert("Запущено в Telegram Web App");
     } else {
       alert("Не в Telegram Web App");
     }
@@ -26,6 +26,10 @@ const SendLinkButton = () => {
     // Проверяем доступность Telegram Web App через SDK
     if (WebApp.isWebApp) {
       try {
+        // Получаем user_id из initData
+        const initData = WebApp.initDataUnsafe;
+        const userId = initData.user.id;
+
         // Запрос на сервер для получения подготовленного сообщения
         const response = await fetch("http://localhost:5000/save-message", {
           method: "POST",
@@ -33,6 +37,7 @@ const SendLinkButton = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            userId,
             messageText: "Click here to open the link",
             url,
           }),
@@ -40,7 +45,6 @@ const SendLinkButton = () => {
 
         const data = await response.json();
         const messageId = data.message_id;
-        console.log(data);
 
         // Отправляем ссылку через Telegram Web App
         WebApp.shareMessage(messageId, (success) => {
@@ -69,7 +73,7 @@ const SendLinkButton = () => {
   return (
     <>
       <button onClick={handleSendLink}>Отправить ссылку</button>
-      <button onClick={handleCheck}>test</button>
+      <button onClick={handleCheck}>Проверить Web App</button>
     </>
   );
 };
