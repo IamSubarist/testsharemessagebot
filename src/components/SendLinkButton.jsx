@@ -2,6 +2,13 @@ import React from "react";
 import WebApp from "@twa-dev/sdk";
 
 const SendLinkButton = () => {
+  const handleCheck = () => {
+    if (WebApp.isWebApp) {
+      alert("123э");
+    } else {
+      alert("Не в Telegram Web App");
+    }
+  };
   const handleSendLink = async () => {
     const url = window.location.href; // Получаем текущую ссылку
 
@@ -47,7 +54,12 @@ const SendLinkButton = () => {
     }
   };
 
-  return <button onClick={handleSendLink}>Отправить ссылку</button>;
+  return (
+    <>
+      <button onClick={handleSendLink}>Отправить ссылку</button>
+      <button onClick={handleCheck}>test</button>;
+    </>
+  );
 };
 
 export default SendLinkButton;
