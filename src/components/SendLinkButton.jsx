@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import WebApp from "@twa-dev/sdk";
 
 const SendLinkButton = () => {
+  // Функция для проверки, запущен ли в Telegram Web App
   const handleCheck = () => {
     if (WebApp.isWebApp) {
       alert("123э");
@@ -9,6 +10,16 @@ const SendLinkButton = () => {
       alert("Не в Telegram Web App");
     }
   };
+
+  // Эффект для инициализации Web App
+  useEffect(() => {
+    // Ждем инициализации Web App перед вызовом проверок
+    WebApp.onEvent("initialized", () => {
+      // Выполняем проверку при инициализации
+      handleCheck();
+    });
+  }, []);
+
   const handleSendLink = async () => {
     const url = window.location.href; // Получаем текущую ссылку
 
@@ -28,7 +39,8 @@ const SendLinkButton = () => {
         });
 
         const data = await response.json();
-        const messageId = data.message_id; // ID подготовленного сообщения
+        const messageId = data.message_id;
+        console.log(data);
 
         // Отправляем ссылку через Telegram Web App
         WebApp.shareMessage(messageId, (success) => {
@@ -57,7 +69,7 @@ const SendLinkButton = () => {
   return (
     <>
       <button onClick={handleSendLink}>Отправить ссылку</button>
-      <button onClick={handleCheck}>test</button>;
+      <button onClick={handleCheck}>test</button>
     </>
   );
 };
