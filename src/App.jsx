@@ -8,7 +8,15 @@ import WebApp from "@twa-dev/sdk";
 
 function App() {
   const [count, setCount] = useState(0);
-  WebApp.showAlert("Hey there!");
+  if (
+    typeof window.Telegram !== "undefined" &&
+    typeof window.Telegram.WebApp !== "undefined" &&
+    window.Telegram.WebApp.initData !== ""
+  ) {
+    console.log("Ты в браузере");
+  } else {
+    WebApp.showAlert("Hey there!");
+  }
 
   return (
     <>
