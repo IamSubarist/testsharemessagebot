@@ -16,7 +16,11 @@ const SendLinkButton = () => {
   // Эффект для инициализации Web App
   useEffect(() => {
     // Проверяем наличие WebApp после инициализации
-    if (typeof WebApp !== "undefined") {
+    if (
+      typeof window.Telegram !== "undefined" &&
+      typeof window.Telegram.WebApp !== "undefined" &&
+      window.Telegram.WebApp.initData !== ""
+    ) {
       setIsWebApp(WebApp.isWebApp);
       WebApp.onEvent("initialized", () => {
         setIsWebApp(WebApp.isWebApp);
