@@ -1,0 +1,17 @@
+{
+  "short_name": "MyWebApp",
+  "name": "My Web App for Telegram",
+  "description": "Web App для отправки ссылок",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0088cc",
+  "icons": [
+    {
+      "src": "https://your-site.com/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

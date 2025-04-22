@@ -1,10 +1,12 @@
 import React from "react";
+import WebApp from "@twa-dev/sdk";
 
 const SendLinkButton = () => {
   const handleSendLink = async () => {
     const url = window.location.href; // Получаем текущую ссылку
 
-    if (window.Telegram) {
+    // Проверяем доступность Telegram Web App через SDK
+    if (WebApp.isWebApp) {
       try {
         // Запрос на сервер для получения подготовленного сообщения
         const response = await fetch("http://localhost:5000/save-message", {
@@ -22,7 +24,7 @@ const SendLinkButton = () => {
         const messageId = data.message_id; // ID подготовленного сообщения
 
         // Отправляем ссылку через Telegram Web App
-        window.Telegram.WebApp.shareMessage(messageId, (success) => {
+        WebApp.shareMessage(messageId, (success) => {
           if (success) {
             console.log("Message successfully sent!");
           } else {
@@ -37,7 +39,7 @@ const SendLinkButton = () => {
       navigator.clipboard
         .writeText(url)
         .then(() => {
-          alert("Ссылка скопирована в буфер обмена updated");
+          alert("Ссылка скопирована в буфер обмена");
         })
         .catch((error) => {
           alert("Не удалось скопировать ссылку");
