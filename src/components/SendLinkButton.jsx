@@ -2,37 +2,28 @@ import React, { useEffect, useState } from "react";
 import WebApp from "@twa-dev/sdk";
 
 const SendLinkButton = () => {
-  const [isWebApp, setIsWebApp] = useState(false);
-
   // Функция для проверки, запущен ли в Telegram Web App
   const handleCheck = () => {
-    if (isWebApp) {
+    if (
+      typeof window.Telegram !== "undefined" &&
+      typeof window.Telegram.WebApp !== "undefined" &&
+      window.Telegram.WebApp.initData !== ""
+    ) {
       alert("Запущено в Telegram Web App");
     } else {
       alert("Не в Telegram Web App");
     }
   };
 
-  // Эффект для инициализации Web App
-  useEffect(() => {
-    // Проверяем наличие WebApp после инициализации
+  const handleSendLink = async () => {
+    const url = window.location.href; // Получаем текущую ссылку
+
+    // Проверяем доступность Telegram Web App через SDK
     if (
       typeof window.Telegram !== "undefined" &&
       typeof window.Telegram.WebApp !== "undefined" &&
       window.Telegram.WebApp.initData !== ""
     ) {
-      setIsWebApp(WebApp.isWebApp);
-      WebApp.onEvent("initialized", () => {
-        setIsWebApp(WebApp.isWebApp);
-      });
-    }
-  }, []);
-
-  const handleSendLink = async () => {
-    const url = window.location.href; // Получаем текущую ссылку
-
-    // Проверяем доступность Telegram Web App через SDK
-    if (isWebApp) {
       try {
         // Получаем user_id из initData
         const initData = WebApp.initDataUnsafe;
