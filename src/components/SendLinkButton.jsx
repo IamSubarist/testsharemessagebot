@@ -37,7 +37,7 @@ const SendLinkButton = () => {
           },
           body: JSON.stringify({
             userId,
-            messageText: "Click here to open the link",
+            messageText: "https://socket.dev/npm/package/@twa-dev/sdk",
             url,
           }),
         });
