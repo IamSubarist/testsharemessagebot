@@ -13,9 +13,9 @@ function App() {
     typeof window.Telegram.WebApp !== "undefined" &&
     window.Telegram.WebApp.initData !== ""
   ) {
-    console.log("Ты в браузере");
-  } else {
     WebApp.showAlert("Hey there!");
+  } else {
+    console.log("Ты в браузере");
   }
 
   return (
