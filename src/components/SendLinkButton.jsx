@@ -37,7 +37,7 @@ const SendLinkButton = () => {
       navigator.clipboard
         .writeText(url)
         .then(() => {
-          alert("Ссылка скопирована в буфер обмена");
+          alert("Ссылка скопирована в буфер обмена updated");
         })
         .catch((error) => {
           alert("Не удалось скопировать ссылку");
