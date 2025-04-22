@@ -45,6 +45,12 @@ const SendLinkButton = () => {
         const data = await response.json();
         const messageId = data.message_id;
 
+        if (!messageId) {
+          console.error("Message ID is not defined");
+          alert("Не удалось получить идентификатор сообщения");
+          return;
+        }
+
         // Отправляем ссылку через Telegram Web App
         WebApp.shareMessage(messageId, (success) => {
           if (success) {
