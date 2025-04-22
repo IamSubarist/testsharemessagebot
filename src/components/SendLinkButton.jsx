@@ -77,7 +77,7 @@ const SendLinkButton = () => {
 
   return (
     <>
-      <button onClick={handleSendLink}>Отправить ссылку1</button>
+      <button onClick={handleSendLink}>Отправить ссылку12</button>
       <button onClick={handleCheck}>Проверить Web App</button>
     </>
   );
