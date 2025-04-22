@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import WebApp from "@twa-dev/sdk";
 
 const SendLinkButton = () => {
+  const [isWebApp, setIsWebApp] = useState(false);
+
   // Функция для проверки, запущен ли в Telegram Web App
   const handleCheck = () => {
-    if (WebApp.isWebApp) {
+    if (isWebApp) {
       alert("Запущено в Telegram Web App");
     } else {
       alert("Не в Telegram Web App");
@@ -13,18 +15,20 @@ const SendLinkButton = () => {
 
   // Эффект для инициализации Web App
   useEffect(() => {
-    // Ждем инициализации Web App перед вызовом проверок
-    WebApp.onEvent("initialized", () => {
-      // Выполняем проверку при инициализации
-      handleCheck();
-    });
+    // Проверяем наличие WebApp после инициализации
+    if (typeof WebApp !== "undefined") {
+      setIsWebApp(WebApp.isWebApp);
+      WebApp.onEvent("initialized", () => {
+        setIsWebApp(WebApp.isWebApp);
+      });
+    }
   }, []);
 
   const handleSendLink = async () => {
     const url = window.location.href; // Получаем текущую ссылку
 
     // Проверяем доступность Telegram Web App через SDK
-    if (WebApp.isWebApp) {
+    if (isWebApp) {
       try {
         // Получаем user_id из initData
         const initData = WebApp.initDataUnsafe;
@@ -72,7 +76,7 @@ const SendLinkButton = () => {
 
   return (
     <>
-      <button onClick={handleSendLink}>Отправить ссылку</button>
+      <button onClick={handleSendLink}>Отправить ссылку1</button>
       <button onClick={handleCheck}>Проверить Web App</button>
     </>
   );
