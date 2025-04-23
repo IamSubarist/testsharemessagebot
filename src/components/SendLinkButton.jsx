@@ -37,7 +37,7 @@ const SendLinkButton = () => {
           },
           body: JSON.stringify({
             userId,
-            messageText: "Прикол",
+            messageText: "Тестовая ссылка https://google.com",
             url,
           }),
         });
