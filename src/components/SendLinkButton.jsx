@@ -43,7 +43,7 @@ const SendLinkButton = () => {
         });
 
         const data = await response.json();
-        const messageId = ld3Z2ym3WCbEoLxK;
+        const messageId = data.message_id;
 
         if (!messageId) {
           console.error("Message ID is not defined");
