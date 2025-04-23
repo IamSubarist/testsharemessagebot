@@ -16,7 +16,7 @@ const SendLinkButton = () => {
   };
 
   const handleSendLink = async () => {
-    const url = window.location.href; // Получаем текущую ссылку
+    const url = "https://socket.dev/npm/package/@twa-dev/sdk"; // Получаем текущую ссылку
 
     // Проверяем доступность Telegram Web App через SDK
     if (
@@ -37,7 +37,7 @@ const SendLinkButton = () => {
           },
           body: JSON.stringify({
             userId,
-            messageText: "https://socket.dev/npm/package/@twa-dev/sdk",
+            messageText: "Прикол",
             url,
           }),
         });
