@@ -52,7 +52,7 @@ const SendLinkButton = () => {
         }
 
         // Отправляем ссылку через Telegram Web App
-        WebApp.shareMessage("ld3Z2ym3WCbEoLxK", (success) => {
+        WebApp.shareMessage(messageId, (success) => {
           if (success) {
             console.log("Message successfully sent!");
           } else {
