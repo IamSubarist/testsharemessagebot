@@ -6,7 +6,7 @@ import SendLinkButton from "./components/SendLinkButton";
 import SendButton from "./components/SendButton";
 import WebApp from "@twa-dev/sdk";
 import TgPopup from "./components/TgPopup";
-import TgPopup2 from "./components/TgPopup2";
+import TgPopupTest from "./components/TgPopupTest";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,7 +24,7 @@ function App() {
     <>
       <SendLinkButton />
       <TgPopup />
-      <TgPopup2 />
+      <TgPopupTest />
       <SendButton />
     </>
   );
