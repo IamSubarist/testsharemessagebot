@@ -35,7 +35,7 @@ export default function TgPopup({ taskId, redirectURL, onSuccess }) {
         const telegram = window.Telegram;
         if (telegram && telegram.Login) {
           telegram.Login.auth(
-            { bot_id: "7845438804", request_access: true },
+            { bot_id: "8159992448", request_access: true },
             (data) => {
               if (data) resolve(data);
               else reject(new Error("Telegram login failed"));
