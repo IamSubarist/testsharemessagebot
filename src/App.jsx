@@ -24,7 +24,7 @@ function App() {
     <>
       <SendLinkButton />
       <TgPopup />
-      <TgPopupTest />
+      {/* <TgPopupTest /> */}
       <SendButton />
     </>
   );
