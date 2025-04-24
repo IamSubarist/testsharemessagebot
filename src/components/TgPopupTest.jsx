@@ -33,7 +33,7 @@ const TgPopupTest = ({ text, height = 48, onSuccess }) => {
         // Запрашиваем авторизацию через Telegram
         const tgData = await new Promise((resolve, reject) => {
           telegram.Login.auth(
-            { bot_id: "7845438804", request_access: true },
+            { bot_id: "8159992448", request_access: true },
             (data) => {
               if (data) resolve(data);
               else reject(new Error("Telegram login failed"));
