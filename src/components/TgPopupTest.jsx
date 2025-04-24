@@ -103,9 +103,6 @@ const TgPopupTest = ({ text, height = 48, onSuccess }) => {
         onClick={handleTelegramLogin}
         disabled={loading || !widgetReady}
       >
-        <div className="button-img-tg-container">
-          <img src={telegrammIcon} alt="Telegram icon" />
-        </div>
         {loading ? "Загрузка..." : text ?? "Привязать через Telegram"}
       </button>
     </div>
