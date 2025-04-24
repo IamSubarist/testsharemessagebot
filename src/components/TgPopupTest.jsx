@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import telegrammIcon from "../../assets/img/Vector.svg";
 import { toast } from "react-toastify";
 import axios from "axios";
-import "./TelegramLoginButton.style.scss";
 
-const TgPopup2 = ({ text, height = 48, onSuccess }) => {
+const TgPopupTest = ({ text, height = 48, onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [widgetReady, setWidgetReady] = useState(false);
 
@@ -114,4 +112,4 @@ const TgPopup2 = ({ text, height = 48, onSuccess }) => {
   );
 };
 
-export default TgPopup2;
+export default TgPopupTest;
